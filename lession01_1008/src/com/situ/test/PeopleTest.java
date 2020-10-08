@@ -22,6 +22,7 @@ public class PeopleTest {
 		String hobby = sc.next();
 		People p = new People(name, age, sex, birthday, phoneNum, email, hobby);
 		System.out.println(p.toString());
+		sc.close();
 	}
 
 }

@@ -1,7 +1,5 @@
 package com.situ.test;
 
-import javax.xml.crypto.Data;
-
 public class People {
 	private String peopleName;
 	private int peopleAge;
