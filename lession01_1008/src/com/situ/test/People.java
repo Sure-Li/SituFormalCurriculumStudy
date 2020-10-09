@@ -20,7 +20,6 @@ public class People {
 		this.peopleEmail = peopleEmail;
 		this.peopleHobby = peopleHobby;
 	}
-
 	@Override
 	public String toString() {
 		return "People [peopleName=" + peopleName + ", peopleAge=" + peopleAge + ", peopleSex=" + peopleSex
