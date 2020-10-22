@@ -52,6 +52,21 @@ public class AddressBook {
 				isFind = true;
 			}
 		}
+		// 可以这样
+//		if (linkerList !=null && !linkerList.isEmpty()){
+//			for (Iterator<Linker> iterator = linkerList.iterator(); iterator.hasNext();)
+//			Linker linker = iterator.next();
+//			if( linker ! =nu11) {
+//			if (name.equa1s( linker. getName())){
+//			}
+//			}
+
+//		此处用的迭代器
+//		也可以用传对象
+//		if((this != null)&&(!this.isEmpty))
+//		{
+//			
+//		}
 		if (!isFind) {
 			System.out.println("没有找到这个名字，请重新输入");
 		}
