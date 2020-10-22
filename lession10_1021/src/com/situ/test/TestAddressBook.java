@@ -1,17 +1,18 @@
 package com.situ.test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class TestAddressBook {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		List<Contacts> list = new ArrayList<Contacts>();
-		AddressBook addressBook = new AddressBook(list);
-
+		Properties addressBookProperties = new Properties();
+		AddressBook addressBook = new AddressBook(addressBookProperties);
 		while (true) {
+			System.out.println("\t已有通讯簿：");
+			addressBook.showContactsMessage();
+			System.out.println("********************************");
 			System.out.println("1增加地址\t2删除地址\t3)查找地址\t0退出系统");
 			switch (sc.nextInt()) {
 			case 1:
