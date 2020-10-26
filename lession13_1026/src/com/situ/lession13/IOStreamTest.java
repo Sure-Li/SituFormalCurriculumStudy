@@ -2,7 +2,6 @@ package com.situ.lession13;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,8 +10,8 @@ import java.io.OutputStream;
 public class IOStreamTest {
 
 	public static void main(String[] args) {
-		File file = new File("1.txt");
-		File fileOutput = new File("2.txt");
+		File file = new File("D:\\1.txt");
+		File fileOutput = new File("E:\\2.txt");
 		InputStream input = null;
 		OutputStream output = null;
 		try {
