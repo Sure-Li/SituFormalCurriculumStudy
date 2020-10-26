@@ -12,34 +12,31 @@ public class IOStreamTest {
 
 	public static void main(String[] args) {
 		File file = new File("1.txt");
+		File fileOutput = new File("2.txt");
+		InputStream input = null;
+		OutputStream output = null;
 		try {
-			OutputStream output = new FileOutputStream(file);
-			byte[] a = { 'a', 'b', 'c', 'd', 'e', 'f', 'g' };
-			output.write(a);
-			output.close();
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			InputStream input = new FileInputStream(file);
-			// 没必要用数组 限制了长度
-//			byte[] b = new byte[5];
-//			input.read(b);
-//			for (byte c : b) {
-//				System.out.print((char)c);
-//			}
+			input = new FileInputStream(file);
+			output = new FileOutputStream(fileOutput);
 			int b = -1;
 			while ((b = input.read()) != -1) {
 				System.out.print((char) b);
+				output.write(b);
 			}
-			input.close();
 
 		} catch (Exception e) {
 			System.out.println("文件读取失败");
 			e.printStackTrace();
+		} finally {
+			// 不管是否有异常 finally 一定会运行
+			// 资源回收 后用完的先关闭
+			try {
+				output.close();
+				input.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
