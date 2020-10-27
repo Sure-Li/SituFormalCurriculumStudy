@@ -13,7 +13,7 @@ public class BatchIO {
 	public static void main(String[] args) {
 		File file = new File("D:\\src\\com\\situ\\lession13\\test\\Java基础核心总结.pdf");
 //		file.getParentFile().mkdirs();//获取父文件
-		
+
 		File file1 = new File("E:\\Java基础核心总结.pdf");
 		System.out.println(file.getAbsolutePath() + file.isFile() + file.exists());
 		InputStream input = null;

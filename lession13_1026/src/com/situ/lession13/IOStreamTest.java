@@ -21,6 +21,7 @@ public class IOStreamTest {
 			while ((b = input.read()) != -1) {
 				System.out.print((char) b);
 				output.write(b);
+				System.out.println(b);
 			}
 
 		} catch (Exception e) {
