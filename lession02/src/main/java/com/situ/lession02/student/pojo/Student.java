@@ -16,6 +16,8 @@ public class Student implements Serializable {
 		this.stuName = stuName;
 		this.stuAge = stuAge;
 	}
+	public Student() {
+	}
 	public void setRow_id(String row_id) {
 		this.row_id = row_id;
 	}

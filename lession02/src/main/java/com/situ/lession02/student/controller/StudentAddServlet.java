@@ -23,6 +23,7 @@ public class StudentAddServlet extends HttpServlet {
 		String getStuAge = request.getParameter("stuAge");
 		System.out.println("学生姓名：" + getStuName);
 		System.out.println("学生年龄 ：" + getStuAge);
+		
 		String sql = "INSERT INTO TB_STUDENT(STU_NAME,STU_AGE) VALUES (?,?)";
 		System.out.println("受影响行数：" + JDBCUtil.executeUpdate(sql, getStuName, getStuAge));
 		/* 将数据保存到DB中的表中 */

@@ -10,7 +10,7 @@
 <body>
 <div class = "div1">
 <ul>
-<li><a href = "">班级管理 </a></li>
+<li><a href = "ClazzIndexServlet" target="mainFrame">班级管理 </a></li>
 <li><a href = "StudentIndexServlet" target="mainFrame">学生管理</a></li>
 </ul>
 </div>

@@ -33,7 +33,7 @@ public class JDBCUtil {
 		return rs;
 
 	}
-
+	
 	public static int executeUpdate(String sql, Object... args) {
 		int result = -1;
 		Connection conn = getConnection();

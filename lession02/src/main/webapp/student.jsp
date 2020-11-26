@@ -9,13 +9,13 @@
 </head>
 <body>
 <a href="student_add.jsp" class="add" style="float: right">新增</a>
-	<table class="mainTable">
+	<table class="mainTable" id="studentTable">
 	   <tr>
-            <td>学生ID<td/>
-            <td>学生姓名<td/>
-            <td>学生年龄<td/>
-            <td>操作<td/>
-        <tr/>
+            <td>学生ID</td>
+            <td>学生姓名</td>
+            <td>学生年龄</td>
+            <td>操作</td>
+        </tr>
 	   <% 
 	   Object obj = request.getAttribute("studentlist");
 	   if(obj!=null){
@@ -23,17 +23,33 @@
 		   if(getStudentList!=null&&getStudentList.size()>0){
 			   for(Student student:getStudentList){%>
 				   <tr>
-				    <td><%= student.getRow_id() %><td/>
-		            <td><%= student.getStuName() %><td/>
-		            <td><%= student.getStuAge() %><td/>
+				    <td><%= student.getRow_id() %></td>
+		            <td><%= student.getStuName() %></td>
+		            <td><%= student.getStuAge() %></td>
 		            <td>
-		            <a href ="javaScript: ">删除</a><a href ="javaScript: ">修改</a>
-		            <td/>
-		            <tr/>
+		            <a href ="javaScript:" class="delete"data-id=<%= student.getRow_id() %>>删除</a><a href ="StudentGoEditServlet?rowId=<%= student.getRow_id() %> ">修改</a>
+		            <%-- StudentDelServlet?delName=<%= student.getRow_id() %> --%>
+		            </td>
+		            </tr>
 					   <%}
 		   }
 	   }
 	   %>
 </table>
 </body>
+<script type="text/javascript" src="js\jQuery\jquery-3.4.1.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#studentTable").off('click','.delete').on('click','.delete',function(){
+		var id = $(this).data('id');
+		console.log(id);
+		if(confirm("请确认是否删除")){
+		    //使用js发起url请求
+			window.location.href="StudentDelServlet?delName="+id;
+		}else{
+			console.log("BBB");
+		}
+	})
+});
+</script>
 </html>
