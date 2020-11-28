@@ -21,7 +21,11 @@
 %>
 <input type="hidden" name="stuIdEdit" value="<%=studentEdit.getRow_id()%>">
 姓名：<input name="stuNameEdit" value="<%=studentEdit.getStuName()%>"/>
+班级id：<input name="stuClazzIdEdit" value="<%=studentEdit.getClazzId()%>"/>
+账号id：<input name="stuCodeEdit" value="<%=studentEdit.getStuCode()%>"/>
+账号密码：<input name="stuPasswordEdit" value="<%=studentEdit.getStuPassword()%>"/>
 年龄:<input name = "stuAgeEdit" value="<%=studentEdit.getStuAge()%>"/>
+学生生日：<input name="stuBirthdayEdit" value="<%=studentEdit.getStuBirthday()%>"/>
 <input type="submit" value = "tijoao " />
 <input type="reset"  value = "chongzhi "/>
 </form>

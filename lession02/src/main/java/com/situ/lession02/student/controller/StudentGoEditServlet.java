@@ -37,6 +37,10 @@ public class StudentGoEditServlet extends HttpServlet {
 			while (studentList.next()) {
 				studentEdit.setStuName(studentList.getString("STU_NAME"));
 				studentEdit.setStuAge(studentList.getString("STU_AGE"));
+				studentEdit.setClazzId(studentList.getLong("CLAZZ_ID"));
+				studentEdit.setStuBirthday(studentList.getDate("STU_BIRTHDAY"));
+				studentEdit.setStuCode(studentList.getString("STU_CODE"));
+				studentEdit.setStuPassword(studentList.getString("STU_PASSWORD"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

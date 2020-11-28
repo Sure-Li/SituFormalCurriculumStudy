@@ -30,9 +30,7 @@ public class StudentIndexServlet extends HttpServlet {
 		ResultSet resultTemp =  JDBCUtil.executeQuery(sql);
 		try {
 			while(resultTemp.next()) {
-				resultList.add(new Student(resultTemp.getObject("ROW_ID").toString(),resultTemp.getObject("STU_NAME").toString(),resultTemp.getObject("STU_AGE").toString()));
-//				System.out.println(resultTemp.getObject("ROW_ID"));
-//				new Student(resultTemp.getObject("ROW_ID").toString(),resultTemp.getObject("STU_NAME").toString(),resultTemp.getObject("STU_AGE").toString());
+				resultList.add(new Student(resultTemp.getObject("ROW_ID").toString(),resultTemp.getLong("CLAZZ_ID"),resultTemp.getString("STU_CODE"),resultTemp.getString("STU_PASSWORD"),resultTemp.getObject("STU_NAME").toString(),resultTemp.getObject("STU_AGE").toString(),resultTemp.getDate("STU_BIRTHDAY")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -15,6 +15,7 @@ public class HelloWord {
 		/*
 		 * 多行注释
 		 */
+		System.out.println(("1,".split(",")).length);
 	}
 
 }

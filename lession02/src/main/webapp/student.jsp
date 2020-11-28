@@ -8,13 +8,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="student_add.jsp" class="add" style="float: right">新增</a>
+<a href="StudentBeforeAddServlet" class="add" style="float: right">新增</a>
 	<table class="mainTable" id="studentTable">
 	   <tr>
-            <td>学生ID</td>
-            <td>学生姓名</td>
-            <td>学生年龄</td>
-            <td>操作</td>
+            <th>学生ID</th>
+            <th>学生班级ID</th>
+            <th>学生账号ID</th>
+            <th>学生账号密码</th>
+            <th>学生姓名</th>
+            <th>学生年龄</th>
+            <th>学生生日</th>
+            <th>操作</th>
         </tr>
 	   <% 
 	   Object obj = request.getAttribute("studentlist");
@@ -24,8 +28,12 @@
 			   for(Student student:getStudentList){%>
 				   <tr>
 				    <td><%= student.getRow_id() %></td>
+				    <td><%= student.getClazzId() %></td>
+				    <td><%= student.getStuCode() %></td>
+				    <td><%= student.getStuPassword() %></td>
 		            <td><%= student.getStuName() %></td>
 		            <td><%= student.getStuAge() %></td>
+		            <td><%= student.getStuBirthday() %></td>
 		            <td>
 		            <a href ="javaScript:" class="delete"data-id=<%= student.getRow_id() %>>删除</a><a href ="StudentGoEditServlet?rowId=<%= student.getRow_id() %> ">修改</a>
 		            <%-- StudentDelServlet?delName=<%= student.getRow_id() %> --%>

@@ -1,12 +1,42 @@
 package com.situ.lession02.student.pojo;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Student implements Serializable {
 	private static final long serialVersionUID = 1L;
 	 private String row_id;
+	 private long ClazzId;
+	 private String stuCode;
+	 private String stuPassword;
 	 private String stuName;
 	 private String stuAge;
+	 private Date stuBirthday;
+	 
+	public long getClazzId() {
+		return ClazzId;
+	}
+	public void setClazzId(long clazzId) {
+		ClazzId = clazzId;
+	}
+	public String getStuCode() {
+		return stuCode;
+	}
+	public void setStuCode(String stuCode) {
+		this.stuCode = stuCode;
+	}
+	public String getStuPassword() {
+		return stuPassword;
+	}
+	public void setStuPassword(String stuPassword) {
+		this.stuPassword = stuPassword;
+	}
+	public Date getStuBirthday() {
+		return stuBirthday;
+	}
+	public void setStuBirthday(Date stuBirthday) {
+		this.stuBirthday = stuBirthday;
+	}
 	public String getRow_id() {
 		return row_id;
 	}
@@ -32,6 +62,18 @@ public class Student implements Serializable {
 	}
 	public void setStuAge(String stuAge) {
 		this.stuAge = stuAge;
+	}
+	
+	public Student(String row_id, long clazzId, String stuCode, String stuPassword, String stuName, String stuAge,
+			Date stuBirthday) {
+		super();
+		this.row_id = row_id;
+		ClazzId = clazzId;
+		this.stuCode = stuCode;
+		this.stuPassword = stuPassword;
+		this.stuName = stuName;
+		this.stuAge = stuAge;
+		this.stuBirthday = stuBirthday;
 	}
 	@Override
 	public String toString() {
