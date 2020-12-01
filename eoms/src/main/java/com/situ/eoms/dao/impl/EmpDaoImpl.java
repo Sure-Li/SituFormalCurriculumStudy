@@ -103,4 +103,10 @@ public class EmpDaoImpl implements EmpDao {
 		return resultString;
 	}
 
+	@Override
+	public Employee EmpFindOneForAuto(String empId, String rowId) {
+		String sql = "SELECT ROW_ID,EMP_DEP_ID,EMP_ID,EMP_PASSWORD,EMP_NAME,EMP_JOINTIME,EMP_LEVEL,ACTIVE_FLAG,CREATE_BY,CREATE_DATE,UPDATE_BY,UPDATE_DATE FROM TB_EMPLOYEE WHERE EMP_ID = ? AND ROW_ID= ? ";
+		return getEmployeeFromResultSet(JDBCUtil.executeQuery(sql, empId, rowId));
+	}
+
 }

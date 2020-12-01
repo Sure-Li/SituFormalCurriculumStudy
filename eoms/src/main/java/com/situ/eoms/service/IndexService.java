@@ -6,4 +6,5 @@ import javax.servlet.http.HttpSession;
 
 public interface IndexService {
 	boolean doAutoLogin(String empId,String empPassword,HttpSession session,HttpServletRequest request,HttpServletResponse response);
+	int setSession(String cookieValue,HttpServletRequest request);
 }

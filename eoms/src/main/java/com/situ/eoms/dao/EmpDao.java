@@ -12,6 +12,7 @@ public interface EmpDao {
 	int EmpUpdate(Employee employee);
 	Employee EmpFindOne(String empId);
 	Employee EmpFindOne(String empId,String empPassword);
+	Employee EmpFindOneForAuto(String empId,String rowId);
 	List<Employee> EmpFindAll();
 	Employee getEmployeeFromResultSet(ResultSet rs);
 	StringBuffer beforAdd();

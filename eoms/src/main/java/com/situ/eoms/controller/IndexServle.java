@@ -1,6 +1,8 @@
 package com.situ.eoms.controller;
 
 import java.io.IOException;
+
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -46,6 +48,7 @@ public class IndexServle extends HttpServlet {
 			}
 			else {
 				//需要在此处自动登录完成后 将session的值带进去
+				new IndexServiceImpl().setSession(cookieValueGet,request);
 				response.sendRedirect("index.jsp");
 			}
 	    	
