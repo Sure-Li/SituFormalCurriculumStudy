@@ -16,7 +16,9 @@ if(obj!=null){%>
 			<%}
 %>
 		</h1>
-		用户名称：<input type="text" name="empId"><br> 用户密码：<input type="password" name="empPassword"><br> <input type="submit" value="登录"> <input type="reset">
+		用户名称：<input type="text" name="empId"><br> 用户密码：<input type="password" name="empPassword"><br> 
+		自动登录<input type="checkbox" name="isAtuoLogin"> <br>
+		<input type="submit" value="登录"> <input type="reset">
 	</form>
 </body>
 </html>

@@ -1,3 +1,4 @@
+<%@page import="com.situ.eoms.util.CommonUtil"%>
 <%@page import="com.situ.eoms.util.EmpUtil"%>
 <%@page import="com.situ.eoms.pojo.Employee"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -43,7 +44,7 @@ if(obj!=null){
         window.location.href="emp/emp_login.jsp"; 
         <%
         //将session中信息清除掉
-        session.setAttribute(EmpUtil.LOGIN_STUDENT, null);
+        /* session.setAttribute(EmpUtil.LOGIN_STUDENT, null); */
         %>
     }
    
