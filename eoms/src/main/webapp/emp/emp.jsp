@@ -1,7 +1,6 @@
-<%@page import="com.situ.eoms.pojo.Employee"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,37 +10,32 @@
 <body>
 <a href="EmpServlet?empAction=beforAdd" class="add" style="float: right">新增</a>
     <table class="mainTable" id="empTable">
+   
        <tr>
             <th>员工主键序号</th>
-            <th>员工部门ID</th>
+            <th>员工部门</th>
             <th>员工ID</th>
             <th>员工姓名</th>
             <th>员工等级</th>
             <th>员工入职时间</th>
             <th>操作</th>
         </tr>
-       <% 
-       Object obj = request.getAttribute("empList");
-       if(obj!=null){
-    	   List<Employee> getEmpList = (List<Employee>)obj;
-           if(getEmpList!=null&&getEmpList.size()>0){
-               for(Employee employee:getEmpList){%>
-                   <tr>
-                    <td><%= employee.getRowId() %></td>
-                    <td><%= employee.getEmpDepId() %></td>
-                    <td><%= employee.getEmpId() %></td>
-                    <td><%= employee.getEmpName() %></td>
-                    <td><%= employee.getEmpLevel() %></td>
-                    <td><%= employee.getEmpJoinTime() %></td>
+         <c:if test="${!empty empList}">
+        <c:forEach items="${empList}" var="emp">
+                    <tr>
+                    <td>${emp.rowId}</td>
+                    <td>${emp.empDepName}</td>
+                    <td>${emp.empId}</td>
+                    <td>${emp.empName}</td>
+                    <td>${emp.empLevel}</td>
+                    <td>${emp.empJoinTime}</td>
                     <td>
-                    <a href ="javaScript:" class="delete"data-id=<%= employee.getRowId() %>>删除</a><a href ="EmpServlet?empAction=goUpdate&rowId=<%= employee.getRowId() %> ">修改</a>
+                    <a href ="javaScript:" class="delete"data-id="${emp.rowId}">删除</a><a href ="EmpServlet?empAction=goUpdate&rowId=${emp.rowId}">修改</a>
                     <%-- StudentDelServlet?delName=<%= student.getRow_id() %> --%>
                     </td>
                     </tr>
-                       <%}
-           }
-       }
-       %>
+        </c:forEach>
+        </c:if>
 </table>
 </body>
 <script type="text/javascript" src="js\jQuery\jquery-3.4.1.js"></script>

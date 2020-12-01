@@ -25,15 +25,15 @@ import com.situ.eoms.service.impl.EmpServiceImpl;
 public class EmpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	EmpService empService = new EmpServiceImpl();
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String getAction = request.getParameter("empAction");
 		System.out.println(getAction);
-		if(getAction!="") {
+		if (getAction != "") {
 			switch (getAction) {
-			case"beforAdd":
+			case "beforAdd":
 				String result = empService.beforeAdd().toString();
-				System.out.println("pppppp"+result);
 				request.setAttribute("depIdSet", result);
 				request.getRequestDispatcher("emp/emp_add.jsp").forward(request, response);
 				break;
@@ -50,18 +50,18 @@ public class EmpServlet extends HttpServlet {
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
-				Employee employee = new Employee(empDepId, empId, empPassword, empName, empJoinTime, empLevel, 1, "li", Calendar.getInstance().getTime(), "li", Calendar.getInstance().getTime()); 
+				Employee employee = new Employee(empDepId, empId, empPassword, empName, empJoinTime, empLevel, 1, "li",
+						Calendar.getInstance().getTime(), "li", Calendar.getInstance().getTime());
 				empService.add(employee);
-				System.out.println("wwwwwwwwwww");
 				response.sendRedirect("EmpServlet?empAction=select");
 				break;
 			case "delete":
-				String rowId=request.getParameter("delName");
+				String rowId = request.getParameter("delName");
 				empService.deleteEmp(rowId);
 				response.sendRedirect("EmpServlet?empAction=select");
 				break;
 			case "update":
-				
+
 				break;
 			case "select":
 				List<Employee> resultList = new ArrayList<Employee>();
@@ -71,11 +71,8 @@ public class EmpServlet extends HttpServlet {
 				System.out.println(resultList);
 				break;
 			case "goUpdate":
-				String rowId1 =  request.getParameter("rowId");
+				String rowId1 = request.getParameter("rowId");
 				System.out.println(rowId1);
-				System.out.println("aaaaaaaaaaaaaa");
-				//服务层进行查询 返回类的实例
-				//==》得到一个类的实例
 				Employee empEdit = empService.findOne(rowId1);
 				System.out.println(empEdit);
 				empEdit.setRowId(Long.parseLong(rowId1));
@@ -85,6 +82,7 @@ public class EmpServlet extends HttpServlet {
 				break;
 			case "doUpdate":
 				request.setCharacterEncoding("utf-8");
+				Long empRowIDEdit = Long.parseLong(request.getParameter("empRowIDEdit"));
 				String empNameEdit = request.getParameter("empNameEdit");
 				Integer empLevelEdit = Integer.parseInt(request.getParameter("empLevelEdit"));
 				Long empDepIdEdit = Long.parseLong(request.getParameter("empDepIdEdit"));
@@ -96,7 +94,8 @@ public class EmpServlet extends HttpServlet {
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
-				Employee employeeEdit = new Employee(empDepIdEdit, empIdEdit, empPasswordEdit, empNameEdit, empJoinTimeEdit, empLevelEdit, "li", Calendar.getInstance().getTime()); 
+				Employee employeeEdit = new Employee(empRowIDEdit, empDepIdEdit, empIdEdit, empPasswordEdit,
+						empNameEdit, empJoinTimeEdit, empLevelEdit, "li", Calendar.getInstance().getTime());
 				empService.update(employeeEdit);
 				response.sendRedirect("EmpServlet?empAction=select");
 				break;
@@ -104,7 +103,7 @@ public class EmpServlet extends HttpServlet {
 				break;
 			}
 		}
-		
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

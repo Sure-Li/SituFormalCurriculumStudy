@@ -1,11 +1,6 @@
-<%@page import="com.situ.eoms.pojo.Employee"%>
-<%@page import="java.util.Iterator"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.HashSet"%>
-<%@page import="java.util.Set"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,23 +8,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% 
-Object obj = request.getAttribute("empEdit");
-Employee employeeGet =null;
-if(obj!=null){
-    employeeGet = (Employee)obj;
-}
-
-%>
 <form action="EmpServlet?empAction=doUpdate" method ="post">
-<!-- get 方式速度快 缺点 不安全 有大小限制 -->
-<!-- post 将表单数据做成一个数据块进行提交，速度稍慢，安全，大小无限制 -->
-员工部门ID：<input name="empDepIdEdit" value="<%=employeeGet.getEmpDepId()%>">
-员工姓名：<input name="empNameEdit" value="<%=employeeGet.getEmpName()%>"/><br>
-员工id:<input name = "empIdEdit" value="<%=employeeGet.getEmpId()%>"/><br>
-员工密码:<input name = "empPasswordEdit"value="<%=employeeGet.getEmpPassword()%>"/><br>
-员工入职日期:<input name = "empJoinTimeEdit"value="<%=employeeGet.getEmpJoinTime()%>"/><br>
-员工等级:<input name = "empLevelEdit"value="<%=employeeGet.getEmpLevel()%>">
+<%-- ${empEdit} --%>
+<input type="hidden" name="empRowIDEdit" value="${empEdit.rowId}">
+员工部门ID：<input name="empDepIdEdit" value="${empEdit.empDepId}">
+员工姓名：<input name="empNameEdit" value="${empEdit.empName}"/><br>
+员工id:<input name = "empIdEdit" value="${empEdit.empId}"/><br>
+员工密码:<input name = "empPasswordEdit"value="${empEdit.empPassword}"/><br>
+员工入职日期:<input name = "empJoinTimeEdit"value="${empEdit.empJoinTime}"/><br>
+员工等级:
+<select name ="empLevelEdit" >
+<option  value="1" ${empEdit.empLevel==1?"selected='selected'":""}>1</option>
+<option value="2" ${empEdit.empLevel==2?"selected='selected'":""}>2</option>
+<option  value="3" ${empEdit.empLevel==3?"selected='selected'":""}>3</option>
+</select>
 <input type="submit" value = "tijoao " />
 <input type="reset"  value = "chongzhi "/>
 </form>

@@ -48,7 +48,7 @@ public class EmpDaoImpl implements EmpDao {
 	@Override
 	public List<Employee> EmpFindAll() {
 		List<Employee> resultList = new ArrayList<Employee>();
-		String sql = "SELECT * FROM TB_EMPLOYEE WHERE ACTIVE_FLAG = 1";
+		String sql = "SELECT * FROM `test`.`VI_EMPALL_LEFT_DEP_DEPNAME` WHERE ACTIVE_FLAG = 1";
 		ResultSet resultTemp = JDBCUtil.executeQuery(sql);
 		try {
 
@@ -58,12 +58,11 @@ public class EmpDaoImpl implements EmpDao {
 						resultTemp.getString("EMP_NAME"), resultTemp.getDate("EMP_JOINTIME"),
 						resultTemp.getInt("EMP_LEVEL"), resultTemp.getInt("ACTIVE_FLAG"),
 						resultTemp.getString("CREATE_BY"), resultTemp.getDate("CREATE_Date"),
-						resultTemp.getString("UPDATE_BY"), resultTemp.getDate("UPDATE_DATE"));
+						resultTemp.getString("UPDATE_BY"), resultTemp.getDate("UPDATE_DATE"),resultTemp.getString("DEP_NAME"));
 				resultList.add(employeeTemp);
 			}
 		} catch (Exception e) {
 		}
-		System.out.println("_____________" + resultList);
 		return resultList;
 	}
 
