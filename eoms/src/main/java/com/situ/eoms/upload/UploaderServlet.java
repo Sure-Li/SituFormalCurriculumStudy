@@ -63,6 +63,7 @@ public class UploaderServlet extends HttpServlet {
 							String realPath = application.getRealPath("/");
 							//需要写出文件的相对路径
 							String filePath = "file/"+newFileName;
+							//后期相对路径需要保存到数据库中
 							System.out.println(realPath+filePath);
 							File tofile = new File(realPath+filePath);
 							//尝试生成文件目录
