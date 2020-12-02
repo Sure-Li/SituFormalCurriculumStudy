@@ -1,13 +1,24 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.situ.lession02.student.pojo.Student"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>Insert title here</title>
 </head>
 <body>
+<%
+List<Integer> test= new ArrayList <Integer>();
+test.add(1);
+test.add(2);
+test.add(3);
+request.setAttribute("list", test);
+Integer.parseInt("1");
+%>
 <a href="StudentBeforeAddServlet" class="add" style="float: right">新增</a>
 	<table class="mainTable" id="studentTable">
 	   <tr>
@@ -20,30 +31,30 @@
             <th>学生生日</th>
             <th>操作</th>
         </tr>
-	   <% 
-	   Object obj = request.getAttribute("studentlist");
-	   if(obj!=null){
-		   List<Student> getStudentList = (List<Student>)obj;
-		   if(getStudentList!=null&&getStudentList.size()>0){
-			   for(Student student:getStudentList){%>
-				   <tr>
-				    <td><%= student.getRow_id() %></td>
-				    <td><%= student.getClazzId() %></td>
-				    <td><%= student.getStuCode() %></td>
-				    <td><%= student.getStuPassword() %></td>
-		            <td><%= student.getStuName() %></td>
-		            <td><%= student.getStuAge() %></td>
-		            <td><%= student.getStuBirthday() %></td>
-		            <td>
-		            <a href ="javaScript:" class="delete"data-id=<%= student.getRow_id() %>>删除</a><a href ="StudentGoEditServlet?rowId=<%= student.getRow_id() %> ">修改</a>
-		            <%-- StudentDelServlet?delName=<%= student.getRow_id() %> --%>
-		            </td>
-		            </tr>
-					   <%}
-		   }
-	   }
-	   %>
+        <c:if test="${!empty studentlist}">
+        <c:forEach items="${studentlist}" var="student">
+        <tr>
+	        <td>
+	        ${student.row_id}
+	        </td>
+	        <td>
+	        ${student.stuName}
+	        </td>
+	        <td>
+	        ${student.stuAge}
+	        </td>
+	   </tr>
+        
+        </c:forEach>
+        </c:if>
 </table>
+${list.contains(Integer.parseInt("1"))} 
+<input type="checkbox" name="userLike" value="1" ${list.contains(Integer.parseInt('1'))?"checked='checked'":""}>读书
+<input type="checkbox" name="userLike" value="2" checked="${list.contains(Integer.parseInt('2'))}?'checked':'false' ">2
+<input type="checkbox" name="userLike" value="3" checked="${list.contains(Integer.parseInt('3'))}?'checked':'' ">3
+<input type="checkbox" name="userLike" value="4" checked="${list.contains(Integer.parseInt('4'))}?'checked':'' ">4
+<input type="checkbox" name="userLike" value="5" checked="${list.contains(Integer.parseInt('5'))}?'checked':'' ">5
+<input type="checkbox" name="userLike" value="6" checked="${list.contains(Integer.parseInt('6'))}?'checked':'' ">6
 </body>
 <script type="text/javascript" src="js\jQuery\jquery-3.4.1.js"></script>
 <script type="text/javascript">
