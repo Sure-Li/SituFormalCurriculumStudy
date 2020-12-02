@@ -100,7 +100,8 @@ public class FileMessageServiceImpl implements FileMessageService {
 		
 		try {
 			InputStream input = new FileInputStream(fromFile);
-			response.setHeader("Content-Disposition","attachment; filename=" + getFileMessage.getFileName());
+			String fileName =getFileMessage.getFileName();
+			response.setHeader("Content-Disposition","attachment; filename="+new String(fileName.getBytes("utf-8"),"ISO8859-1"));
 			System.out.println(getFileMessage.getFileName());
 			
 			//将输入流响应给浏览器
