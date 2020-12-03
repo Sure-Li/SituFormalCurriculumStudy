@@ -13,4 +13,6 @@ public interface ClazzDao {
 	public Integer update(Clazz clazz);
 	public Integer delete(String delname);
 	public Integer add(Clazz clazz);
+	public Clazz findOneByName(String clazzName);
+	public Integer deleteByRowId(String rowId);
 }

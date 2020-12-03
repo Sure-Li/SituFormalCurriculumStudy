@@ -40,6 +40,16 @@ public class ClazzServiceImple implements ClazzService, Serializable {
 		int result = clazzDao.update(clazz);
 		return result;
 	}
+	@Override
+	public Clazz findOneByName(String clazzName) {
+		Clazz result =null;
+		result = clazzDao.findOneByName(clazzName);
+		return result;
+	}
+	@Override
+	public Integer delClazzByRowId(String rowId) {
+		return clazzDao.deleteByRowId(rowId) ;
+	}
 	
 	
 }

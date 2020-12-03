@@ -28,7 +28,6 @@ public class ClazzDaoImpl implements Serializable, ClazzDao {
 				}
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 
 		return resultList;
@@ -46,7 +45,6 @@ public class ClazzDaoImpl implements Serializable, ClazzDao {
 				}
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 
 		return result;
@@ -63,7 +61,7 @@ public class ClazzDaoImpl implements Serializable, ClazzDao {
 
 	@Override
 	public Integer delete(String delname) {
-		String sql = "UPDATE FORM `test`.`TB_CLAZZ` WHERE `ROW_ID` = ?";
+		String sql = "DELETE FORM `test`.`TB_CLAZZ` WHERE `ROW_ID` = ?";
 		int resultTemp = JDBCUtil.executeUpdate(sql, delname);
 		return resultTemp;
 	}
@@ -82,10 +80,34 @@ public class ClazzDaoImpl implements Serializable, ClazzDao {
 			result.setClazzName(rs.getString("CLAZZ_NAME"));
 			result.setRowId(rs.getLong("ROW_ID"));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	@Override
+	public Clazz findOneByName(String clazzName) {
+		Clazz result = null;
+		String sql = "SELECT * FROM TB_CLAZZ WHERE CLAZZ_NAME = ?";
+		ResultSet resultTemp = JDBCUtil.executeQuery(sql,clazzName);
+		try {
+			if (resultTemp != null) {
+				while (resultTemp.next()) {
+					result = getClazzFromResultSet(resultTemp);
+					System.out.println("99999999"+result.toString());
+				}
+			}
+		} catch (Exception e) {
+		}
+
+		return result;
+	}
+
+	@Override
+	public Integer deleteByRowId(String rowId) {
+		String sql = "DELETE FROM TB_CLAZZ WHERE ROW_ID = ?";
+		int resultTemp = JDBCUtil.executeUpdate(sql, rowId);
+		return resultTemp;
 	}
 
 }

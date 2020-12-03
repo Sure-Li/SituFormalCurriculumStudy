@@ -10,5 +10,7 @@ public interface ClazzService {
 	Integer updateClazz(Clazz clazz);
 	Integer addClazz(String clazzName, int classStudentNumber, String clazzInfo);
 	Integer delClazz(String delname);
+	Integer delClazzByRowId(String rowId);
 	Clazz findOne(String rowId);
+	Clazz findOneByName(String clazzName);
 }
