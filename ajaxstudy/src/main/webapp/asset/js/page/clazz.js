@@ -55,21 +55,29 @@
                     }
             });
         });
+        /*layer.confirm('您确定要删除吗?, function(index){layer.close(index);});*/
         $(document).off('click','#clazzDeleteId').on('click','#clazzDeleteId',function(){
             var deleteRowID = $(this).attr('data-deleteId');
+            
             layer.alert('',{
-                icon:2,title:'删除确认',content:'您确定要删除这条记录吗？',closeBtn:1},function(index){
+                icon:2,
+                area:['200px','200px'],
+                title:'删除确认',
+                content:'您确定要删除这条记录吗？',
+                closeBtn:1},
+                function(index){
                     console.log(deleteRowID); 
                     $.ajax({
                          url:"ClazzServlet?action=delete&rowId="+deleteRowID,
                             success:function(result){
                                 console.log("getResponse： "+result);
-                                initFormData();
+                                if(result=="1"){
+                                    initFormData();
+                                }
                             } 
                     });
                     layer.close(index);
-                });
-           
+                });           
         });
         $(document).off('click','#clazzEditSubmitid').on('click','#clazzEditSubmitid',function(){
             console.log("提交点击事件绑定成功");
