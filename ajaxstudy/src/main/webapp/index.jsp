@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="asset\css\index.css">
 </head>
 <body>
-
+<div class="container">
 <div class = "div1">
 <ul>
 <li><a href = "IndexServlet?action=clazz" id="clazzManagerId">班级管理 </a></li>
@@ -17,6 +17,7 @@
 </div>
 <div class = "div2"><h3>学生管理系统</h3></div>
 <div class = "div3" id="mainDiv" >
+</div>
 </div>
 </body>
 <script type="text/javascript" src="asset\js\jQuery\jquery-3.4.1.js"></script>

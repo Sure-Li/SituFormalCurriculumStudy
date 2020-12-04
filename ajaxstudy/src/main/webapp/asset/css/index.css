@@ -4,19 +4,19 @@ body {
 	margin: 0px;
 }
 
-div {
+.container>div {
 	position: absolute;
 	border: 1px solid;
 }
 
-.div1 {
+.container>.div1 {
 	top: 0px;
 	bottom: 0px;
 	left: 0px;
 	width: 100px;
 }
 
-.div2 {
+.container>.div2 {
 	top: 0px;
 	right: 0px;
 	left: 100px;
@@ -24,7 +24,7 @@ div {
 	left: 100px;
 }
 
-.div3 {
+.container>.div3 {
 	top: 100px;
 	bottom: 0px;
 	left: 100px;
