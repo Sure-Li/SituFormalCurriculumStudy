@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.protobuf.WireFormat;
 import com.situ.ajaxstudu.pojo.Clazz;
 import com.situ.ajaxstudu.service.ClazzService;
 import com.situ.ajaxstudu.service.impl.ClazzServiceImple;
@@ -27,8 +29,13 @@ public class ClazzServlet extends HttpServlet {
 			switch (action) {
 			case "list":
 				List<Clazz> clazzList = clazzService.findAll();
-				request.setAttribute("clazzList", clazzList);
-				request.getRequestDispatcher("clazz/clazzlist.jsp").forward(request, response);
+//				request.setAttribute("clazzList", clazzList);
+//				request.getRequestDispatcher("clazz/clazzlist.jsp").forward(request, response);
+				response.setCharacterEncoding("utf-8");
+				ObjectMapper objectMapper = new ObjectMapper();
+				String jsonString = objectMapper.writeValueAsString(clazzList);
+				System.out.println(jsonString);
+				response.getWriter().write(jsonString);
 				break;
 			case "check":
 				Clazz clazzget =null;

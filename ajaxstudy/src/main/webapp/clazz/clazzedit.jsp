@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<br>
-<br>
 <form id="clazzForm" class="clazzFormClass">
 <input type="hidden" name="clazzRowIdEdit" id="clazzRowIdEdit" value="${clazzGet.rowId}"/>
 班级名称：<input name="clazzName" id="clazzNameId" value="${clazzGet.clazzName}"/><span id="clazzNameSpan"></span><br>

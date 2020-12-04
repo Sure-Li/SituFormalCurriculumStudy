@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="asset\css\index.css">
 </head>
 <body>
+
 <div class = "div1">
 <ul>
 <li><a href = "IndexServlet?action=clazz" id="clazzManagerId">班级管理 </a></li>
