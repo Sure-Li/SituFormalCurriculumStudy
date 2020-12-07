@@ -74,4 +74,16 @@ public class Base implements Serializable {
 				+ ", updateBy=" + updateBy + ", updateDate=" + updateDate + "]";
 	}
 
+	public Base(String updateBy, Date updateDate) {
+		super();
+		this.updateBy = updateBy;
+		this.updateDate = updateDate;
+	}
+
+	public Base(Integer activeFlag, String createBy, Date createDate) {
+		this.activeFlag = activeFlag;
+		this.createBy = createBy;
+		this.createDate = createDate;
+	}
+	
 }

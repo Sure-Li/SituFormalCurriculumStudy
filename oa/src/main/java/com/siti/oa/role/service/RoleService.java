@@ -16,4 +16,6 @@ public interface RoleService {
 
 	Integer delRoleByRowId(String parameter);
 
+	Integer updateRole(int  roletype, String  roleName, String roleInfo, long rowId);
+
 }

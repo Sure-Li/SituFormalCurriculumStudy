@@ -24,11 +24,13 @@ public class RoleServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
+		response.setCharacterEncoding("utf-8");
 		if(action.length()>0) {
 			System.out.println(action);
 			switch (action) {
 			case "list":
 				List<Role> roleList = roleService.findAll();
+				System.out.println(roleList);
 				response.setCharacterEncoding("utf-8");
 				ObjectMapper objectMapper = new ObjectMapper();
 				String jsonString = objectMapper.writeValueAsString(roleList);
@@ -49,26 +51,34 @@ public class RoleServlet extends HttpServlet {
 				}
 				break;
 			case "addform":
-				response.sendRedirect("role/roleadd.jsp");
+				response.sendRedirect("role/role_add.jsp");
 				break;
 			case "edit":
 				String rowId = request.getParameter("rowId");
 				System.out.println(rowId);
 				Role roleGetOne = roleService.findOne(rowId);
-				request.setAttribute("clazzGet", roleGetOne);
-				request.getRequestDispatcher("clazz/clazzedit.jsp").forward(request, response);
+				response.setCharacterEncoding("utf-8");
+				String jsonStringEdit = new ObjectMapper().writeValueAsString(roleGetOne);
+				System.out.println(jsonStringEdit);
+				response.getWriter().write(jsonStringEdit);
+				break;
+			case "goEdit":
+				response.sendRedirect("role/role_edit.jsp");
 				break;
 			case "doEdit":
-//				roleService.updateClazz(new Role(Long.parseLong(request.getParameter("rowId")), request.getParameter("clazzName"), Integer.parseInt(request.getParameter("clazzStudentNumberEdit")), request.getParameter("clazzInfoEdit")));
-				response.getWriter().write("1");
+//				System.out.println(Integer.parseInt(request.getParameter("roleType"))+request.getParameter("roleName")+request.getParameter("roleInfo")+Long.parseLong(request.getParameter("rowId")));
+				roleService.updateRole(Integer.parseInt(request.getParameter("roleType")),request.getParameter("roleName"), request.getParameter("roleInfo"),Long.parseLong(request.getParameter("rowId")));
+				response.getWriter().write("角色修改成功");
 				break;
-			case "add":
-				roleService.addRole(Integer.parseInt(request.getParameter("clazzStudentNumber")),request.getParameter("clazzName"), request.getParameter("clazzInfo"));
-				response.getWriter().write("1");
+			case "doAdd":
+				request.setCharacterEncoding("utf-8");
+//				System.out.println(request.getParameter("roleName"));
+				roleService.addRole(Integer.parseInt(request.getParameter("roleType")),request.getParameter("roleName"), request.getParameter("roleInfo"));
+				response.getWriter().write("角色新增完成");
 				break;
 			case "delete":
 				roleService.delRoleByRowId(request.getParameter("rowId"));
-				response.getWriter().write("1");
+				response.getWriter().write("角色删除成功");
 				break;
 			default:
 				break;

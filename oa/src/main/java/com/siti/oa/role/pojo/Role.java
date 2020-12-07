@@ -9,18 +9,20 @@ public class Role extends Base {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Long roleId;
+	private Long rowId;
 	private Integer roleType;
 	private String roleName;
 	private String roleInfo;
+	
 
-	public Long getRoleId() {
-		return roleId;
+	public Long getRowId() {
+		return rowId;
 	}
 
-	public void setRoleId(Long roleId) {
-		this.roleId = roleId;
+	public void setRowId(Long rowId) {
+		this.rowId = rowId;
 	}
+
 
 	public Integer getRoleType() {
 		return roleType;
@@ -46,10 +48,10 @@ public class Role extends Base {
 		this.roleInfo = roleInfo;
 	}
 
-	public Role(Integer activeFlag, String createBy, Date createDate, String updateBy, Date updateDate, Long roleId,
+	public Role(Integer activeFlag, String createBy, Date createDate, String updateBy, Date updateDate, Long rowId,
 			Integer roleType, String roleName, String roleInfo) {
 		super(activeFlag, createBy, createDate, updateBy, updateDate);
-		this.roleId = roleId;
+		this.rowId = rowId;
 		this.roleType = roleType;
 		this.roleName = roleName;
 		this.roleInfo = roleInfo;
@@ -63,13 +65,6 @@ public class Role extends Base {
 		this.roleInfo = roleInfo;
 	}
 
-	@Override
-	public String toString() {
-		return "Role [roleId=" + roleId + ", roleType=" + roleType + ", roleName=" + roleName + ", roleInfo=" + roleInfo
-				+ ", activeFlag=" + super.getActiveFlag() + ", createBy=" + super.getCreateBy() + ", createDate="
-				+ super.getCreateDate() + ", updateBy=" + super.getUpdateBy() + ", updateDate=" + super.getUpdateDate()
-				+ "]";
-	}
 
 	public Role(Integer activeFlag, String createBy, Date createDate, String updateBy, Date updateDate) {
 		super(activeFlag, createBy, createDate, updateBy, updateDate);
@@ -79,4 +74,20 @@ public class Role extends Base {
 		super();
 	}
 
+	@Override
+	public String toString() {
+		return "Role [rowId=" + rowId + ", roleType=" + roleType + ", roleName=" + roleName + ", roleInfo=" + roleInfo
+				+ ", toString()=" + super.toString() + "]";
+	}
+
+	public Role(String updateBy, Date updateDate, Long rowId,
+			Integer roleType, String roleName, String roleInfo) {
+		super(updateBy, updateDate);
+		this.rowId = rowId;
+		this.roleType = roleType;
+		this.roleName = roleName;
+		this.roleInfo = roleInfo;
+	}
+
+	
 }

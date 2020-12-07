@@ -22,20 +22,24 @@ public class RoleServiceImpl implements RoleService {
 
 	@Override
 	public Role findOne(String rowId) {
-		// TODO Auto-generated method stub
-		return null;
+		return roleDao.findOneById(rowId);
 	}
 
 	@Override
-	public Integer addRole(int roletype, String roleName, String roleInfo) {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer addRole(int roleType, String roleName, String roleInfo) {
+		 return roleDao.addRole(roleType,roleName,roleInfo);
 	}
 
 	@Override
-	public Integer delRoleByRowId(String parameter) {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer delRoleByRowId(String rowId) {
+		return roleDao.deleteByRowId(rowId);
 	}
+
+	@Override
+	public Integer updateRole(int roletype, String roleName, String roleInfo, long rowId) {
+		
+		return roleDao.updateRole(roletype,roleName,roleInfo,rowId);
+	}
+
 
 }

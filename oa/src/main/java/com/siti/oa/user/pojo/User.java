@@ -14,6 +14,7 @@ public class User extends Base {
 	private Long rowId;
 	private String userName;
 	private Long userId;
+	private String userPassword;
 	private String userPhoto;
 	private Integer userLoginCount;
 	private Date userLastLoginTime;
@@ -127,5 +128,44 @@ public class User extends Base {
 				+ super.getActiveFlag() + ", createBy=" + super.getCreateBy() + ", createDate=" + super.getCreateDate()
 				+ ", updateBy=" + super.getUpdateBy() + ", updateDate=" + super.getUpdateDate() + "]";
 	}
+
+	public User(Integer activeFlag, String createBy, Date createDate, String userName,
+			Long userId, String userPhoto, Integer userLoginCount, Date userLastLoginTime, String userLastLoginIp,
+			Integer userLock) {
+		super(activeFlag, createBy, createDate);
+		this.userName = userName;
+		this.userId = userId;
+		this.userPhoto = userPhoto;
+		this.userLoginCount = userLoginCount;
+		this.userLastLoginTime = userLastLoginTime;
+		this.userLastLoginIp = userLastLoginIp;
+		this.userLock = userLock;
+	}
+
+	public String getUserPassword() {
+		return userPassword;
+	}
+
+	public void setUserPassword(String userPassword) {
+		this.userPassword = userPassword;
+	}
+
+	public User(Integer activeFlag, String createBy, Date createDate, String updateBy, Date updateDate, Long rowId,
+			String userName, Long userId, String userPassword, String userPhoto, Integer userLoginCount,
+			Date userLastLoginTime, String userLastLoginIp, Integer userLock) {
+		super(activeFlag, createBy, createDate, updateBy, updateDate);
+		this.rowId = rowId;
+		this.userName = userName;
+		this.userId = userId;
+		this.userPassword = userPassword;
+		this.userPhoto = userPhoto;
+		this.userLoginCount = userLoginCount;
+		this.userLastLoginTime = userLastLoginTime;
+		this.userLastLoginIp = userLastLoginIp;
+		this.userLock = userLock;
+	}
+	
+	
+
 
 }
