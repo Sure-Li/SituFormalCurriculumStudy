@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.situ.lession02.clazz.dao.ClazzDao">
+<!-- 定义include -->
+  <sql id="base_select">
+  SELECT ROW_ID,CLAZZ_NAME,CLAZZ_STUDENT_NUMBER,CLAZZ_INFO FROM TB_CLAZZ
+  </sql>
+  <resultMap type="com.situ.lession02.clazz.pojo.Clazz" id="clazz_resultMap">
+  <id property="rowId" column="ROW_ID"/>
+  <result property="clazzName" column="CLAZZ_NAME"></result>
+  <result property="classStudentNumber" column="CLAZZ_STUDENT_NUMBER"></result>
+  <result property="clazzInfo" column="CLAZZ_INFO"></result>
+  </resultMap>
+  <insert id="add" parameterType="com.situ.lession02.clazz.pojo.Clazz">
+    INSERT INTO `test`.`TB_CLAZZ` (`CLAZZ_NAME`, `CLAZZ_STUDENT_NUMBER`,`CLAZZ_INFO`) 
+    VALUES (#{clazzName}, #{classStudentNumber},#{clazzInfo}); 
+  </insert>
+  <delete id="delete">
+    DELETE FROM `test`.`TB_CLAZZ` WHERE `CLAZZ_NAME` = #{delName}; 
+  </delete>
+  <select id="findOne" resultMap="clazz_resultMap">
+  <include refid="base_select"></include> WHERE `ROW_ID`= #{rowId}
+  </select>
+  <select id="findAll" resultMap="clazz_resultMap">
+  <include refid="base_select"></include>
+  </select>
+  <update id="update" parameterType="com.situ.lession02.clazz.pojo.Clazz">
+  UPDATE `test`.`TB_CLAZZ` SET `CLAZZ_NAME` = #{clazzName}, `CLAZZ_STUDENT_NUMBER` = #{classStudentNumber} , `CLAZZ_INFO` = #{clazzInfo} WHERE `ROW_ID` = #{rowId}; 
+  </update>
+</mapper>

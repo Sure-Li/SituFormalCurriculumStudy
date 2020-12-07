@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.situ.lession02.clazz.dao.ClazzDao;
-import com.situ.lession02.clazz.dao.impl.ClazzDaoImpl;
 import com.situ.lession02.clazz.pojo.Clazz;
 import com.situ.lession02.clazz.servic.ClazzService;
+import com.situ.lession02.util.MyBatisUtil;
 
 public class ClazzServiceImple implements ClazzService, Serializable {
 	private static final long serialVersionUID = 1L;
-	ClazzDao clazzDao = new ClazzDaoImpl();
+	ClazzDao clazzDao = MyBatisUtil.getDao(ClazzDao.class);
 	@Override
 	public List<Clazz> findAll() {
 		List<Clazz> result =new ArrayList<Clazz>();
@@ -21,7 +21,7 @@ public class ClazzServiceImple implements ClazzService, Serializable {
 	@Override
 	public Clazz findOne(String rowId) {
 		Clazz result =null;
-		result = clazzDao.findOne(rowId);
+		result = clazzDao.findOne(Long.parseLong(rowId));
 		return result;
 	}
 	@Override
